@@ -1,9 +1,9 @@
 import React from "react";
-
+import {Title} from './style';
 const Dashborad : React.FC = function dashboardComponent(){
-    return ( <h1>
-        Dashboard
-    </h1> );
+    return ( <Title>
+        Explore repositórios no Github.
+    </Title> );
 }
 
 export default Dashborad;
