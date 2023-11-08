@@ -1,9 +1,8 @@
 import React from "react";
-import {Title} from './style';
+import {Container} from './style';
 const Repositories : React.FC = function repositoriesComponent(){
-    return ( <Title>
-        Repositories
-    </Title> );
+    return ( <Container>
+    </Container> );
 }
 
 export default Repositories;

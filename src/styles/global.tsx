@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-export default createGlobalStyle `
+export default createGlobalStyle`
     *{
         box-sizing: border-box;
         margin: 0;
@@ -14,6 +14,11 @@ export default createGlobalStyle `
     }
 
     body, input, body{
-        font: 16px sans-serif;
+        font-size: 16px;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    button{
+        cursor: pointer;
     }
 `;
