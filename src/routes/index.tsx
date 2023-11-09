@@ -14,8 +14,8 @@ const RouteBrowser: React.FC = function configRoutesReact(){
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/"  Component={Dashborad} />
-                <Route path="/repositories" Component={Repositories} />
+                <Route path="/"  element={<Dashborad/>} />
+                <Route path='/repositories/*' element={<Repositories/>}/>
             </Routes>
         </BrowserRouter>
     );

@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import {Title, Container, Form, Repositories,Error} from './style';
 import {FiChevronRight} from 'react-icons/fi'
 
+import {Link} from "react-router-dom";
+
 import api from "./../../services/api"
 import logo from './../../assets/Logo.svg'
 
@@ -49,8 +51,21 @@ const Dashborad : React.FC = function DashboardComponent(){
 
     function handleResponse(response:AxiosResponse<Repository>):void {
         const {data} = response;
-        const resp = Array.from(repositories).concat(data);
+        
+        const indexRepositories = function findIndex(repo:Repository):boolean{
+            return repo.full_name.includes(data.full_name);
+        } 
+        
+        const index = repositories.findIndex(indexRepositories);
+
+        if(index >= 0) {
+            setErrorInput("Repositorio já addionado");
+            setTimeout(()=> setErrorInput(""),800);
+            return; 
+        }
+
         setErrorInput("");
+        const resp = Array.from(repositories).concat(data);
         setRepositories(resp);
     }
     
@@ -69,7 +84,8 @@ const Dashborad : React.FC = function DashboardComponent(){
 
     function mapRepositories(repository:Repository,index:number): React.ReactElement<HTMLAnchorElement> {
             return (
-            <a href="test" key={index} >
+            <Link to={`/repositories/${repository.full_name}`} 
+             key={index} >
                 <img src={repository.owner.avatar_url} alt={repository.owner.login}/>
                 <section className="text">
                     <p className="name">
@@ -80,7 +96,7 @@ const Dashborad : React.FC = function DashboardComponent(){
                     </p>
                 </section>
                 <FiChevronRight className="arrow"/>
-            </a>
+            </Link>
         )
     }
 
